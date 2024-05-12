@@ -1,0 +1,6 @@
+name=Game Name
+author=Author Name
+description=This is template project
+bundleID=com.domain.GameName
+version=0.0.1
+buildNumber=1

@@ -1,0 +1,61 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  BUILD_DIR: ./build
+  SOURCE_DIR: ./src
+  PDX_PATH:
+    sh: echo "{{.BUILD_DIR}}/$(basename $(pwd)).pdx"
+
+tasks:
+  clean:
+    desc: Clean the build output
+    deps: [build-folder]
+    cmds:
+      - rm -rfv "${{.BUILD_DIR}}/*"
+    silent: true
+
+  build:
+    desc: Build the project
+    deps: [clean]
+    cmds:
+      - ${PLAYDATE_SDK_PATH}/bin/pdc -sdkpath "${PLAYDATE_SDK_PATH}" "{{.SOURCE_DIR}}" "{{.PDX_PATH}}"
+    silent: true
+
+  run:
+    desc: Run the project
+    deps: [kill-sim]
+    cmds:
+      - ${PLAYDATE_SDK_PATH}/bin/PlaydateSimulator "{{.PDX_PATH}}"
+    silent: true
+
+  build:run:
+    desc: Build and run the project
+    deps: [build, run]
+    silent: true
+
+  kill-sim:
+    desc: Kill the simulator if one is running
+    cmds:
+      - |
+        SIM_PID=$(pidof PlaydateSimulator || true)
+        if [[ -n ${SIM_PID} ]]; then
+          echo "Killing existing Simulator..."
+          kill -9 ${SIM_PID}
+        fi
+    silent: true
+    internal: true
+
+  build-folder:
+    cmds:
+      - mkdir -p "{{.BUILD_DIR}}"
+    generates:
+      - "{{.BUILD_DIR}}"
+    silent: true
+    internal: true
+
+  default:
+    cmds:
+      - task --list
+    silent: true
