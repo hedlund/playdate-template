@@ -8,6 +8,9 @@ vars:
   PDX_PATH:
     sh: echo "{{.BUILD_DIR}}/$(basename $(pwd)).pdx"
 
+env:
+  PLAYDATE_SDK_PATH: "{{.HOME}}/Applications/PlaydateSDK"
+
 tasks:
   clean:
     desc: Clean the build output
@@ -33,6 +36,26 @@ tasks:
   build:run:
     desc: Build and run the project
     deps: [build, run]
+    silent: true
+
+  init:
+    desc: Init the repository
+    deps: [build-folder]
+    cmds:
+      - git submodule update --init --remote
+    silent: true
+
+  install:
+    desc: Download & install the Playdate SDK
+    cmds:
+      - |
+        if [ ! -d "$PLAYDATE_SDK_PATH" ]; then
+          mkdir -p "$(dirname $PLAYDATE_SDK_PATH)"
+          curl -L https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-latest.tar.gz | tar -xz -C /tmp
+          mv /tmp/PlaydateSDK-* "$PLAYDATE_SDK_PATH"
+        else
+          echo "Playdate SDK already installed..."
+        fi
     silent: true
 
   kill-sim:
