@@ -1,0 +1,24 @@
+name: Build game
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+env:
+  BUILD_OUTPUT: ${{ github.event.repository.name }}
+
+jobs:
+  build:
+    name: Build game
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Playdate SDK
+        uses: idleberg/setup-playdate-sdk@v3.0.0
+
+      - name: Build
+        run: |
+          pdc -s src ${{ env.BUILD_OUTPUT }}.pdx
