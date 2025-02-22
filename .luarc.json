@@ -7,8 +7,9 @@
     "duplicate-set-field": "Hint"
   },
   "format.defaultConfig": {
-    "indent_style": "space",
-    "indent_size": "4"
+    "indent_style": "tab",
+    "indent_size": "2",
+    "tab_width": "2"
   },
   "runtime.builtin": {
     "io": "disable",
