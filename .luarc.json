@@ -30,6 +30,6 @@
   ],
   "runtime.version": "Lua 5.4",
   "workspace.library": [
-    "vendor/playdate-luacats"
+    "Vendor/playdate-luacats"
   ]
 }

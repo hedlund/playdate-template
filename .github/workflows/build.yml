@@ -21,4 +21,4 @@ jobs:
 
       - name: Build
         run: |
-          pdc -s src ${{ env.BUILD_OUTPUT }}.pdx
+          pdc -s Source ${{ env.BUILD_OUTPUT }}.pdx
