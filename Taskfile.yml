@@ -3,8 +3,8 @@
 version: "3"
 
 vars:
-  BUILD_DIR: ./Builds
-  SOURCE_DIR: ./Source
+  BUILD_DIR: ./build
+  SOURCE_DIR: ./source
   PDX_PATH:
     sh: echo "{{.BUILD_DIR}}/$(basename $(pwd)).pdx"
 

@@ -19,7 +19,7 @@ jobs:
 
       - name: Build and zip
         run: |
-          pdc -s Source ${{ env.BUILD_OUTPUT }}.pdx
+          pdc -s source ${{ env.BUILD_OUTPUT }}.pdx
           zip -r -9 ${{ env.BUILD_OUTPUT }}.zip ${{ env.BUILD_OUTPUT }}.pdx
 
       - name: Upload release
