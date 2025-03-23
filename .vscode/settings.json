@@ -25,4 +25,5 @@
     "$PLAYDATE_SDK_PATH/CoreLibs"
   ],
   "Lua.workspace.preloadFileSize": 1000,
+  "playdate-debug.outputPath": "./build",
 }
