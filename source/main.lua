@@ -1,8 +1,22 @@
 import "CoreLibs/graphics"
 
-local gfx <const> = playdate.graphics
+import "init"
+
+local pd <const> = playdate
+local gfx <const> = pd.graphics
+
+manager = Manager()
+manager:hook()
+
+local function init()
+  manager:enter(Hello())
+end
 
 function playdate.update()
-	gfx.clear()
-	gfx.drawText("Hello World", 20, 20)
+  gfx.sprite.update()
+  pd.timer.updateTimers()
+
+  manager:emit("update")
 end
+
+init()

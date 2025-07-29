@@ -32,6 +32,11 @@
   "runtime.version": "Lua 5.4",
   "workspace.preloadFileSize": 1000,
   "workspace.library": [
+    "definitions",
+    "toyboxes",
     "vendor/playdate-luacats"
+  ],
+  "workspace.ignoreDir": [
+    "toyboxes"
   ]
 }
