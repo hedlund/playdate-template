@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #4.2.2
 
       - name: Setup Playdate SDK
-        uses: idleberg/setup-playdate-sdk@v3.0.0
+        uses: idleberg/setup-playdate-sdk@b39a6b4a7e44270beaf99e379ffd5648fc9516a2 #3.0.0
 
       - name: Build
         run: |
