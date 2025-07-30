@@ -1,3 +1,5 @@
 import "extensions/bind"
 import "extensions/enum"
+import "extensions/math"
 import "extensions/mixin"
+import "extensions/table"
